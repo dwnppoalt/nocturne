@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Plus } from "lucide-react";
 import { useAnimation } from "framer-motion";
 import { NoteData } from "src/components/ui/Note/Note.types";
-import { useRef, useEffect, useState, useMemo } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/layout/Footer";
 import Navbar from "../components/layout/Navbar";
@@ -62,14 +62,16 @@ export default function Home() {
     fetchNotes();
   }, []);
 
-  const filteredNotes = useMemo(() => {
+  const [filteredNotes, setFilteredNotes] = useState<NoteData[]>([]);
+
+  useEffect(() => {
     const initialViewport = viewportSize(window.innerWidth);
     if (initialViewport === "sm") {
-      return notes.slice(0, 5);
+      setFilteredNotes(notes.slice(0, 5));
     } else if (initialViewport === "md") {
-      return notes.slice(0, 10);
+      setFilteredNotes(notes.slice(0, 10));
     } else {
-      return notes;
+      setFilteredNotes(notes);
     }
   }, [notes]);
   const controls = useAnimation();

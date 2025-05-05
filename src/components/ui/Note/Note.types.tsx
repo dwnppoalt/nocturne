@@ -10,5 +10,15 @@ export type NoteProps = {
     top?: number;
     left?: number;
     rotation?: number;
+    id?: string;
+    custom?: number;
     positionType?: "absolute" | "flex";
+  };
+
+export type NoteData = {
+    message: string;
+    author: string;
+    color: string;
+    rotation: number;
+    id: string;
   };

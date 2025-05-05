@@ -1,11 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Plus } from "lucide-react";
-import { useRef } from "react";
+import { useAnimation } from "framer-motion";
+import { NoteData } from "src/components/ui/Note/Note.types";
+import { useRef, useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/layout/Footer";
 import Navbar from "../components/layout/Navbar";
 import Note from "../components/ui/Note/Note";
+import SentenceAnimate from "../components/ui/SentenceAnimate/SentenceAnimate";
+import { getRandomNote } from "../api/index";
 
 const containerVariants = {
   hidden: {},
@@ -13,84 +17,126 @@ const containerVariants = {
     transition: {
       duration: 0.5,
       ease: "easeOut",
-      staggerChildren: 0.1,
+      staggerChildren: 0.2,
     },
   },
 };
 
 const noteVariants = {
-  hidden: { opacity: 0, scale: 1.05 },
-  show: { opacity: 1, scale: 1, transition: { ease: "easeOut", duration: 0.5 } },
+  hidden: (custom: number) => ({ opacity: 0, scale: 1.05, rotate: custom }),
+  show: (custom: number) => ({
+    opacity: 1,
+    scale: 1,
+    rotate: custom,
+    transition: { ease: "easeOut", duration: 0.5 },
+  }),
+};
+
+const viewportSize = (width: number) => {
+  if (width < 640) return "sm";
+  if (width < 768) return "md";
+  return "lg";
 };
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
-  
-    const notes = [
-        { message: "i know it'd be easier if i just didnt ask", author: "niki", color: "#ffffff" },
-        { message: "but it'd also be easier if she wasn't your last", color: "#fffec8" },
-        { message: "sometimes the hardest part is letting go", author: "sam", color: "#ffcbc8" },
-        { message: "i miss the way we used to talk until sunrise", color: "#d3f8e2" },
-        { message: "wish i could tell you how much you meant to me", author: "elle", color: "#e2d5f9" },
-        { message: "remember when we danced in the rain?", color: "#c8e6ff" },
-        { message: "your smile still lights up my darkest days", author: "kai", color: "#fcdec9" },
-        { message: "i wonder if you think about me too", color: "#e9ffdb" },
-        { message: "i'm sorry for the words i never said", author: "mia", color: "#ffd9eb" },
-        { message: "some nights i still reach for my phone to text you", color: "#d4f0f0" },
-        { message: "i found your old sweater today", author: "leo", color: "#f2fac8" },
-        { message: "i'm learning to be okay without you", color: "#f9e0fd" },
-        { message: "do you remember our promises?", author: "ash", color: "#ffc8dc" },
-        { message: "i hope you found what you were looking for", color: "#c8fdff" },
-        { message: "the song we danced to still makes me cry", author: "jay", color: "#f0e8ff" },
-        { message: "i still keep your letter in my drawer", color: "#eeffcc" },
-        { message: "i've forgiven you. i hope you've forgiven me too", author: "tia", color: "#ffefd1" },
-        { message: "i'm proud of the person you've become", color: "#e1f0c4" },
-        { message: "i wish we had more time", author: "river", color: "#f6daff" },
-        { message: "you taught me how to love myself", color: "#cce5ff" },
-        { message: "i reread our messages more than i should", author: "nico", color: "#e8fff2" },
-        ];
+  const [notes, setNotes] = useState<NoteData[]>([]);
+  const [_, setLoading] = useState(true);
+
+
+  useEffect(() => {
+    const fetchNotes = async () => {
+      try {
+        const randomNotes = (await getRandomNote(20)).map((n: NoteData) => ({
+          ...n,
+          rotation: Math.random() * 6 - 3,
+        }));
+        setNotes(randomNotes);
+      } catch (error) {
+        console.error("Failed to fetch random notes:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNotes();
+  }, []);
+
+  const filteredNotes = useMemo(() => {
+    const initialViewport = viewportSize(window.innerWidth);
+    if (initialViewport === "sm") {
+      return notes.slice(0, 5);
+    } else if (initialViewport === "md") {
+      return notes.slice(0, 10);
+    } else {
+      return notes;
+    }
+  }, [notes]);
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (filteredNotes.length > 0) {
+      controls.start("show");
+    }
+  }, [filteredNotes]);
 
   return (
     <div className="min-h-screen flex flex-col">
-        <Navbar />
+      <Navbar />
+      <motion.div
+        ref={containerRef}
+        className="flex-1 relative w-full overflow-hidden"
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+      >
+        <div className="absolute left-1/2 top-[calc(50%-4rem)] transform -translate-x-1/2 -translate-y-1/2 z-30 text-center flex flex-col items-center">
+          <h1 className="text-8xl font-bold text-center" style={{ fontFamily: "Reenie Beanie, cursive", textAlign: "center" }}>
+            nocturne
+          </h1>
+          <h2 className="text-2xl font-semibold mt-0 text-center" style={{ fontFamily: "Inter, sans-serif", textAlign: "center" }}>
+            <SentenceAnimate text="collection of unspoken thoughts" />
+          </h2>
+          <div className="flex justify-center mt-4">
+            <Button style={{ fontFamily: "Inter, sans-serif" }}>
+              <Link to="/new" className="flex items-center">
+                <Plus className="mr-1.5" /> New note
+              </Link>
+            </Button>
+            <Button
+              variant="secondary"
+              style={{ fontFamily: "Inter, sans-serif" }}
+              className="ml-4"
+            >
+              <Link to="/search" className="flex items-center">
+                Browse notes
+              </Link>
+            </Button>
+          </div>
+        </div>
+
         <motion.div
-          ref={containerRef}
-          className="flex-1 relative w-full overflow-hidden"
+          className="relative w-full h-full"
           variants={containerVariants}
           initial="hidden"
-          animate="show"
+          animate={controls}
         >
-
-        <div className="absolute left-1/2 top-[calc(50%-4rem)] transform -translate-x-1/2 -translate-y-1/2 z-1000">
-
-            <h1 className="text-8xl font-bold" style={{fontFamily: "Reenie Beanie, cursive"}}>nocturne</h1>
-            <div className="flex">
-              <Button style={{fontFamily: "Inter, sans-serif"}}>
-                <Link to="/new" className="flex items-center">
-                  <Plus className="mr-1.5" /> New note
-                </Link>
-              </Button>
-              <Button variant="secondary" style={{fontFamily: "Inter, sans-serif"}} className="ml-4">
-                <Link to="/browse" className="flex items-center">
-                  Browse notes
-                </Link>
-              </Button>
-            </div>
-          </div>
-
-          {notes.map((note, index) => (
+          {filteredNotes.map((note) => (
             <Note
-              key={index}
+              id={note.id}
               message={note.message}
               author={note.author}
               color={note.color}
               dragConstraints={containerRef}
               variants={noteVariants}
-                useRandomPosition={true}
+              custom={note.rotation}
+              useRandomPosition={true}
             />
           ))}
         </motion.div>
-        <Footer />
+
+      </motion.div>
+      <Footer />
     </div>
   );
 }

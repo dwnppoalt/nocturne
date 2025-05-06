@@ -61,11 +61,13 @@ export default function New() {
                                 className="w-full p-2"
                                 autoComplete="off"
                             />
-                            {message.length >= 80 && (
-                                <p className="text-sm text-muted-foreground mt-1">
-                                    {100 - message.length} characters remaining
-                                </p>
-                            )}
+                            <p
+                                className={`text-sm mt-1 text-right ${
+                                    message.length >= 85 ? 'text-red-500' : 'text-muted-foreground'
+                                }`}
+                            >
+                                {100 - message.length}/100
+                            </p>
                         </div>
                         <div>
                             <Label htmlFor="author" className="mb-2">Author</Label>
@@ -77,11 +79,13 @@ export default function New() {
                                 autoComplete="off"
                                 maxLength={20}
                             />
-                            {author.length >= 15 && (
-                                <p className="text-sm text-muted-foreground mt-1">
-                                    {20 - author.length} characters remaining
-                                </p>
-                            )}
+                            <p
+                                className={`text-sm mt-1 text-right ${
+                                    author.length >= 15 ? 'text-red-500' : 'text-muted-foreground'
+                                }`}
+                            >
+                                {20 - author.length}/20
+                            </p>
                         </div>
                         <div>
                             <Label htmlFor="color" className="mb-2">Color</Label>
@@ -103,7 +107,7 @@ export default function New() {
                     <div className="flex flex-col md:flex-row items-center mt-6 space-y-4 md:space-y-0 ">
                         <TurnstileComponent onTokenObtained={handleTokenObtained} />
                         <Button
-                            disabled={!token || loading}
+                            disabled={!token || loading || !message}
                             className="w-full md:w-auto"
                             onClick={async () => {
                                 if (!token) return;  

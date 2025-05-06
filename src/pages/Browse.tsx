@@ -6,6 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useEffect, useState } from "react";
 import { searchNotes } from "../api";
 import { NoteData } from "../components/ui/Note/Note.types";
+import { Input } from "@/components/ui/input";
 
 function Browse() {
     const [query, setQuery] = useState("");
@@ -59,12 +60,13 @@ function Browse() {
                 </h1>
                 <div className="flex flex-col align-middle justify-center items-center">
                     <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-[50%] items-center">
-                        <input
+                        <Input
                             type="text"
                             placeholder="Search..."
-                            className="border border-gray-300 rounded p-2 flex-grow"
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
+                            onKeyDown={(e => e.key === 'Enter' && handleSearch())}
+                            style={{ fontFamily: "Inter, sans-serif" }} 
                         />
                         <Button className="text-white rounded p-2" onClick={handleSearch}>
                             Search
@@ -90,6 +92,20 @@ function Browse() {
                             ))}
                     </div>
                 </div>
+                <p className="text-center mt-10 text-gray-500">
+                    {loading && (
+                        <span className="animate-pulse">Loading more notes...</span>
+                    )}
+                    {!loading && notes.length === 0 && !hasMore && (
+                        <span>No notes found.</span>
+                    )}
+                    {!loading && !hasMore && notes.length > 0 && (
+                        <span>No more notes to load.</span>
+                    )}
+                    {!loading && hasMore && notes.length > 0 && (
+                        <span>Scroll down to load more notes.</span>
+                    )}
+                </p>
             </div>
             <Footer />
         </>

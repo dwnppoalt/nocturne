@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
         >
             <div className="flex items-center">
                 <h1
-                    className="text-3xl md:text-4xl font-bold"
+                    className="text-3xl md:text-4xl"
                     style={{ fontFamily: "Reenie Beanie, cursive" }}
                 >
                     nocturne
@@ -46,6 +46,11 @@ const Navbar: React.FC = () => {
                     <NavigationMenuItem>
                         <Link to="/new" className={navigationMenuTriggerStyle()}>
                             New note
+                        </Link>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
+                        <Link to="/about" className={navigationMenuTriggerStyle()}>
+                            About
                         </Link>
                     </NavigationMenuItem>
                 </NavigationMenuList>
@@ -92,18 +97,24 @@ const Navbar: React.FC = () => {
                         >
                             New note
                         </Link>
+                        <Link
+                            to="/about"
+                            className="text-lg font-medium text-neutral-900 hover:text-neutral-700"
+                            style={{ fontFamily: "Inter, sans-serif" }}
+                        > 
+                            About
+                        </Link>
+
                     </nav>
                     <DrawerFooter>
-                    
                         <div className="flex items-center justify-center space-x-2 mt-4">
-                        <p className="text-sm text-muted-foreground flex items-center justify-center">
-                          made with <Heart className="h-4 w-4 mx-1" />
-                        </p>
+                            <p className="text-sm text-muted-foreground flex items-center justify-center">
+                                made with <Heart className="h-4 w-4 mx-1" />
+                            </p>
                             <Button variant="ghost" size="icon" asChild>
                                 <Link to="https://github.com/dwnppoalt/nocturne">
                                     <Github className="h-5 w-5" />
                                 </Link>
-                                
                             </Button>
                             <Button variant="ghost" size="icon" asChild>
                                 <Link to="https://ko-fi.com/dwnpp0">

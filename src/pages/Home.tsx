@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Plus } from "lucide-react";
+import { Plus, Search } from "lucide-react";
 import { useAnimation } from "framer-motion";
 import { NoteData } from "src/components/ui/Note/Note.types";
 import { useRef, useEffect, useState } from "react";
@@ -111,6 +111,7 @@ export default function Home() {
               className="ml-4"
             >
               <Link to="/search" className="flex items-center">
+              <Search className="mr-1.5"/>
                 Browse notes
               </Link>
             </Button>

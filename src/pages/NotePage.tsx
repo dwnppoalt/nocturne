@@ -21,21 +21,27 @@ function NotePage() {
   const handleSaveAsImage = async () => {
     if (!noteRef.current) return;
     setSaveState("saving");
-
+  
     try {
-      const dataUrl = await toPng(noteRef.current, { cacheBust: true });
+      const dataUrl = await toPng(noteRef.current, {
+        cacheBust: true,
+        pixelRatio: 2,
+        width: noteRef.current.offsetWidth,  // Explicitly set width
+        height: noteRef.current.offsetHeight 
+      });
+      noteRef.current.style.position = 'static';
       const link = document.createElement("a");
       link.download = "note.png";
       link.href = dataUrl;
       link.click();
-
+  
       setSaveState("saved");
     } catch (err) {
       console.error("Failed to export image:", err);
       setSaveState("idle");
       return;
     }
-
+  
     setTimeout(() => setSaveState("idle"), 2000);
   };
 

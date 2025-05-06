@@ -8,6 +8,10 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/shadcn/*"]
-    }
+    },
+    "types": [
+      "vitest",
+      "vitest/globals"
+    ]
   }
 }

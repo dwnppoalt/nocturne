@@ -1,4 +1,5 @@
-# nocturne
+<h1 align="center">nocturne</h1> 
+![note](https://github.com/user-attachments/assets/603baf7f-287b-4146-a04f-bf4e46efc6a2)
 
 a collection of unspoken words —  
 saved in handwriting, stuck like memories on a wall.

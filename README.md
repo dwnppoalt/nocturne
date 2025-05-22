@@ -1,5 +1,8 @@
 <h1 align="center">nocturne</h1> 
-![note](https://github.com/user-attachments/assets/603baf7f-287b-4146-a04f-bf4e46efc6a2)
+
+![note](https://github.com/user-attachments/assets/f6b6bbf7-e37c-4e22-850a-b1c1f425c495)
+
+<a href="https://nocturne.dwnppo.dev/note/9">entry 9 from nocturne</a>
 
 a collection of unspoken words —  
 saved in handwriting, stuck like memories on a wall.

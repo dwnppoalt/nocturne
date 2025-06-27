@@ -24,6 +24,7 @@ const Navbar: React.FC = () => {
             style={{ fontFamily: "Inter, sans-serif" }}
         >
             <div className="flex items-center">
+<<<<<<< HEAD
                 <a
                     className="text-3xl md:text-4xl"
                     style={{ fontFamily: "Reenie Beanie, cursive", textDecoration: "none" }}
@@ -31,6 +32,14 @@ const Navbar: React.FC = () => {
                 >
                     nocturne
                 </a>
+=======
+                <h1
+                    className="text-3xl md:text-4xl"
+                    style={{ fontFamily: "Reenie Beanie, cursive" }}
+                >
+                    nocturne
+                </h1>
+>>>>>>> d17ba4ac5efe2712e071ea050fc98af7ded761f7
             </div>
             <NavigationMenu className="hidden md:flex items-center">
                 <NavigationMenuList className="flex">
@@ -85,7 +94,11 @@ const Navbar: React.FC = () => {
                             Home
                         </Link>
                         <Link
+<<<<<<< HEAD
                             to="/search"
+=======
+                            to="/browse"
+>>>>>>> d17ba4ac5efe2712e071ea050fc98af7ded761f7
                             className="text-lg font-medium text-neutral-900 hover:text-neutral-700"
                             style={{ fontFamily: "Inter, sans-serif" }}
                         >
@@ -102,7 +115,11 @@ const Navbar: React.FC = () => {
                             to="/about"
                             className="text-lg font-medium text-neutral-900 hover:text-neutral-700"
                             style={{ fontFamily: "Inter, sans-serif" }}
+<<<<<<< HEAD
                         >
+=======
+                        > 
+>>>>>>> d17ba4ac5efe2712e071ea050fc98af7ded761f7
                             About
                         </Link>
 

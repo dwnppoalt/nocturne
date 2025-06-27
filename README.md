@@ -1,12 +1,9 @@
-<<<<<<< HEAD
-# nocturne
-=======
-<h1 align="center">nocturne</h1> 
 
-![note](https://github.com/user-attachments/assets/f6b6bbf7-e37c-4e22-850a-b1c1f425c495)
+# nocturne
+
+![note](https://github.com/user-attachments/assets/f6b6bbf7-e37c-4e22-850a-b1c1f425c495 )
 
 <a href="https://nocturne.dwnppo.dev/note/9">entry 9 from nocturne</a>
->>>>>>> d17ba4ac5efe2712e071ea050fc98af7ded761f7
 
 a collection of unspoken words —  
 saved in handwriting, stuck like memories on a wall.

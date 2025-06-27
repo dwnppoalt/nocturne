@@ -73,11 +73,9 @@ function About() {
                         className="text-justify text-lg mt-3"
                         variants={itemVariants}
                     >
-<<<<<<< HEAD
+
                         i hope you enjoy using it as much as i enjoyed building it. if you have any feedback or suggestions, feel free to reach out to me on my email at <a href="mailto:me@dwnppo.dev" className="hover:underline"><strong>me@dwnppo.dev</strong></a>, or on my <a href="https://x.com/dwnpp0" className="hover:underline"><strong>X (formerly Twitter)</strong></a> account.
-=======
-                        i hope you enjoy using it as much as i enjoyed building it. if you have any feedback or suggestions, feel free to reach out to me on my email at <a href="mailto:nocturne@dwnppo.dev" className="hover:underline"><strong>nocturne@dwnppo.dev</strong></a>, or on my <a href="https://x.com/dwnpp0" className="hover:underline"><strong>X (formerly Twitter)</strong></a> account.
->>>>>>> d17ba4ac5efe2712e071ea050fc98af7ded761f7
+
                     </motion.p>
                     <motion.p
                         className="text-justify text-lg mt-3"
@@ -99,8 +97,4 @@ function About() {
     );
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> d17ba4ac5efe2712e071ea050fc98af7ded761f7
 export default About;

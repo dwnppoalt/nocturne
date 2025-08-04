@@ -69,7 +69,7 @@ export default function Home() {
     if (initialViewport === "sm") {
       setFilteredNotes(notes.slice(0, 5));
     } else if (initialViewport === "md") {
-      setFilteredNotes(notes.slice(0, 10));
+      setFilteredNotes(notes.slice(0, 7));
     } else {
       setFilteredNotes(notes);
     }

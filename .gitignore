@@ -18,8 +18,8 @@ pnpm-debug.log*
 Thumbs.db
 ehthumbs.db
 Desktop.ini
-package-lock.json
 .vscode/
+
 
 bower_components/
 .next/

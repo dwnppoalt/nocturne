@@ -9,11 +9,11 @@ import { NoteData } from "../components/ui/Note/Note.types";
 import { Input } from "@/components/ui/input";
 
 function Browse() {
-    const [query, setQuery] = useState("");
+    const [query, setQuery] = useState<string>("");
     const [notes, setNotes] = useState<NoteData[]>([]);
-    const [loading, setLoading] = useState(false);
-    const [page, setPage] = useState(1);
-    const [hasMore, setHasMore] = useState(true);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [page, setPage] = useState<number>(1);
+    const [hasMore, setHasMore] = useState<boolean>(true);
 
     useEffect(() => {
         loadNotes();

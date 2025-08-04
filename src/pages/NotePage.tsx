@@ -1,6 +1,6 @@
 import { getNote } from "../api/index";
 import { useEffect, useRef, useState } from "react";
-import { Check, Loader2, Download, Share, ClipboardCheck } from "lucide-react"; // ADD THIS
+import { Check, Loader2, Download, Share, ClipboardCheck } from "lucide-react";
 import Navbar from "../components/layout/Navbar";
 import Note from "../components/ui/Note/Note";
 import Footer from "../components/layout/Footer";
@@ -26,8 +26,8 @@ function NotePage() {
       const dataUrl = await toPng(noteRef.current, {
         cacheBust: true,
         pixelRatio: 2,
-        width: noteRef.current.offsetWidth,  // Explicitly set width
-        height: noteRef.current.offsetHeight 
+        width: noteRef.current.offsetWidth,
+        height: noteRef.current.offsetHeight
       });
       noteRef.current.style.position = 'static';
       const link = document.createElement("a");

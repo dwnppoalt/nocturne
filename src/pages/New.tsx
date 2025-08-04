@@ -12,11 +12,11 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useNavigate } from "react-router-dom";
 
 export default function New() {
-    const [message, setMessage] = useState("");
-    const [author, setAuthor] = useState("");
-    const [color, setColor] = useState("#fffec8");
+    const [message, setMessage] = useState<string>("");
+    const [author, setAuthor] = useState<string>("");
+    const [color, setColor] = useState<string>("#fffec8");
     const [token, setToken] = useState<string | null>(null); 
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
 

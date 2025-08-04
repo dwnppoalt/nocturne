@@ -3,7 +3,7 @@ function addNote(message: string, color: string, author: string, cfTurnstileToke
         message,
         author,
         color,
-        "cf-turnstile-response": cfTurnstileToken, // Updated key to match middleware expectation
+        "cf-turnstile-response": cfTurnstileToken,
     };
 
     return fetch("https://nocturne-api.vercel.app/create", {
@@ -16,7 +16,7 @@ function addNote(message: string, color: string, author: string, cfTurnstileToke
         body: JSON.stringify(requestBody),
     }).then(async (response) => {
         if (!response.ok) {
-            const errorData = await response.json(); // Parse the error response
+            const errorData = await response.json();
             throw new Error(errorData.error || "Network response was not ok");
         }
         return response.json();

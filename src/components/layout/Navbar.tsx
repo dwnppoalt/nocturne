@@ -31,13 +31,6 @@ const Navbar: React.FC = () => {
                 >
                     nocturne
                 </a>
-
-                <h1
-                    className="text-3xl md:text-4xl"
-                    style={{ fontFamily: "Reenie Beanie, cursive" }}
-                >
-                    nocturne
-                </h1>
             </div>
             <NavigationMenu className="hidden md:flex items-center">
                 <NavigationMenuList className="flex">
@@ -92,7 +85,7 @@ const Navbar: React.FC = () => {
                             Home
                         </Link>
                         <Link
-                            to="/browse"
+                            to="/search"
                             className="text-lg font-medium text-neutral-900 hover:text-neutral-700"
                             style={{ fontFamily: "Inter, sans-serif" }}
                         >

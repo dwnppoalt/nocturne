@@ -74,7 +74,7 @@ const Note = forwardRef<HTMLDivElement, NoteProps>(({
       dragElastic={0.3}
       dragMomentum={false}
       dragConstraints={dragConstraints}
-      className="p-4 rounded-md shadow-md break-words w-48 sm:w-48 md:w-58 h-48 md:h-58 text-2xl relative cursor-move mx-auto"
+      className="p-4 rounded-md shadow-md break-words w-48 sm:w-48 md:w-58 h-48 md:h-58 sm:text-xl md:text-2xl relative cursor-move mx-auto"
       variants={variants}
       custom={finalRotation}
       style={{
@@ -93,7 +93,7 @@ const Note = forwardRef<HTMLDivElement, NoteProps>(({
     >
 
       <p className="text-hand top-1">{message}</p>
-      <p className="absolute bottom-0 right-0 text-right p-4 text-2xl/5">
+      <p className="absolute bottom-0 right-0 text-right p-4 sm:text-xl md:text-2xl/5">
         – {author == "" ? "anon" : author}
       </p>
     </motion.div>

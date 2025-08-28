@@ -6,7 +6,7 @@ function addNote(message: string, color: string, author: string, cfTurnstileToke
         "cf-turnstile-response": cfTurnstileToken,
     };
 
-    return fetch("https://nocturne-api.vercel.app/create", {
+    return fetch("https://nocturne-api.dwnppo.dev/create", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -27,7 +27,7 @@ function addNote(message: string, color: string, author: string, cfTurnstileToke
 }
 
 function searchNotes(query: string, page: number) {
-    return fetch(`https://nocturne-api.vercel.app/search?q=${encodeURIComponent(query)}&page=${encodeURIComponent(page)}`, {
+    return fetch(`https://nocturne-api.dwnppo.dev/search?q=${encodeURIComponent(query)}&page=${encodeURIComponent(page)}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -50,7 +50,7 @@ function searchNotes(query: string, page: number) {
 }
 
 function getRandomNote(count: number) {
-    return fetch(`https://nocturne-api.vercel.app/random?count=${count}`, {
+    return fetch(`https://nocturne-api.dwnppo.dev/random?count=${count}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -67,7 +67,7 @@ function getRandomNote(count: number) {
 }
 
 function getNote(id: string) {
-    return fetch(`https://nocturne-api.vercel.app/message/${id}`, {
+    return fetch(`https://nocturne-api.dwnppo.dev/message/${id}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

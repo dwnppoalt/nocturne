@@ -74,7 +74,7 @@ function About() {
                         variants={itemVariants}
                     >
 
-                        i hope you enjoy using it as much as i enjoyed building it. if you have any feedback or suggestions, feel free to reach out to me on my email at <a href="mailto:me@dwnppo.dev" className="hover:underline"><strong>me@dwnppo.dev</strong></a>, or on my <a href="https://x.com/dwnpp0" className="hover:underline"><strong>X (formerly Twitter)</strong></a> account.
+                        i hope you enjoy using it as much as i enjoyed building it. if you have any feedback or suggestions, feel free to reach out to me on my email at <a href="mailto:dwnppo@dwnppo.dev" className="hover:underline"><strong>dwnppo@dwnppo.dev</strong></a>, or on my <a href="https://x.com/dwnpp0" className="hover:underline"><strong>X (formerly Twitter)</strong></a> account.
 
                     </motion.p>
                     <motion.p
